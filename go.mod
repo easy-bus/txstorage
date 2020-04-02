@@ -1,4 +1,4 @@
-module github.com/letsfire/txstorage
+module github.com/easy-bus/txstorage
 
 go 1.12
 
