@@ -28,7 +28,6 @@ func (rts *redisTxstorage) Store(data []byte) (string, error) {
 func (rts *redisTxstorage) Fetch(id string) ([]byte, error) {
 	res, err := rts.client.Bytes(func(c redis.Conn) (interface{}, error) {
 		return c.Do("HGET", rts.hashMap, id)
-
 	})
 	if err == redis.ErrNil {
 		return nil, nil
