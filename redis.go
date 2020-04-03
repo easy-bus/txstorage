@@ -2,6 +2,7 @@ package txstorage
 
 import (
 	"errors"
+
 	"github.com/easy-bus/bus"
 	"github.com/gomodule/redigo/redis"
 	"github.com/letsfire/redigo"
@@ -26,7 +27,12 @@ func (rts *redisTxstorage) Store(data []byte) (string, error) {
 
 func (rts *redisTxstorage) Fetch(id string) ([]byte, error) {
 	return rts.client.Bytes(func(c redis.Conn) (interface{}, error) {
-		return c.Do("HGET", rts.hashMap, id)
+		res, err := c.Do("HGET", rts.hashMap, id)
+		if err == redis.ErrNil {
+			return nil, nil
+		} else {
+			return res, err
+		}
 	})
 }
 
