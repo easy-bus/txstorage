@@ -1,9 +1,10 @@
 package txstorage
 
 import (
-	"github.com/letsfire/redigo/mode/alone"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/letsfire/redigo/v2/mode/alone"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRedis(t *testing.T) {

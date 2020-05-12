@@ -5,7 +5,7 @@ import (
 
 	"github.com/easy-bus/bus"
 	"github.com/gomodule/redigo/redis"
-	"github.com/letsfire/redigo"
+	"github.com/letsfire/redigo/v2"
 	"github.com/letsfire/utils"
 )
 
