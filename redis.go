@@ -2,11 +2,9 @@ package txstorage
 
 import (
 	"errors"
-
 	"github.com/easy-bus/bus"
 	"github.com/gomodule/redigo/redis"
 	"github.com/letsfire/redigo/v2"
-	"github.com/letsfire/utils"
 )
 
 type redisTxstorage struct {
@@ -15,7 +13,7 @@ type redisTxstorage struct {
 }
 
 func (rts *redisTxstorage) Store(data []byte) (string, error) {
-	id := utils.GenerateSeqId()
+	id := generateSeqId()
 	num, err := rts.client.Int(func(c redis.Conn) (interface{}, error) {
 		return c.Do("HSET", rts.hashMap, id, data)
 	})
